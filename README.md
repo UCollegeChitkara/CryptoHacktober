@@ -40,3 +40,35 @@ These rules also imply a ⊕ b ⊕ a = b:
 a ⊕ b ⊕ a = a ⊕ a ⊕ b (second rule)
 = 0 ⊕ b (third rule)
 = b (fourth rule)
+
+-----
+
+## One Time Pad (OTP):
+
+There’s an encryption scheme, called a one-time pad, which consists of just that single operator. It’s called a one-time pad because it involves a sequence (the ”pad”) of random bits, and the security of the scheme depends on only using that pad once.
+This scheme is unique not only in its simplicity, but also because it has the strongest possible security guarantee. If the bits are truly random (and therefore unpredictable by an attacker), and the pad is only used once, the attacker learns nothing about the plaintext when they see a ciphertext.
+
+### Attacks on OTP : 
+The one-time pad security guarantee only holds if it is used correctly. First of all, the one-time pad has to consist of truly
+random data. Secondly, the one-time pad can only be used once (hence the name). Unfortunately, most commercial products that 
+claim to be ”one-time pads” are snake oil , and don’t satisfy at least one of those two properties. 
+
+#### Not using truly random data :
+
+The first issue is that they use various deterministic constructs to produce the one-time pad, instead of using truly
+random data. That isn’t necessarily insecure: in fact, the most obvious example, a synchronous stream cipher, is something 
+we’ll see later in the book. However, it does invalidate the ”unbreakable” security property of one-time pads. The end user
+would be better served by a more honest cryptosystem, instead of one that lies about its security properties.
+
+#### Reusing the ”one-time” pad :
+The other issue is with key reuse, which is much more serious. Suppose an attacker gets two ciphertexts with the same ”one-time” pad. The attacker can then XOR the two ciphertexts, which is also the XOR of the plaintexts:
+
+```
+c1 ⊕ c2 = (p1 ⊕ k) ⊕ (p2 ⊕ k) (definition)
+= p1 ⊕ k ⊕ p2 ⊕ k (reorder terms)
+= p1 ⊕ p2 ⊕ k ⊕ k (a ⊕ b = b ⊕ a)
+= p1 ⊕ p2 ⊕ 0 (x ⊕ x = 0)
+= p1 ⊕ p2 (x ⊕ 0 = x)
+```
+
+At first sight, that may not seem like an issue. To extract either p1 or p2, you’d need to cancel out the XOR operation, which means you need to know the other plaintext. The problem is that even the result of the XOR operation on two plaintexts contains quite a bit information about the plaintexts themselves.
