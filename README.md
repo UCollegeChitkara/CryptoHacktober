@@ -96,4 +96,12 @@ Once again the hashlib Python module can be used to generate a SHA-1 hash:
 import hashlib
 hashlib.sha1(”crypto101”).hexdigest()
 ```
-
+#### SHA-2 :
+SHA-2 is a family of hash functions including SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224 and SHA-512/256 and their
+digest sizes 224, 256, 384, 512, 224 and 256 respectively. These hash can be used for digital signatures, message 
+authentication and random number generators. SHA-2 performs better than SHA-1 and provides better security, 
+because of its increase in collision resistance.
+SHA-224 and SHA-256 were designed for 32-bit processor registers, while SHA-384 and SHA-512 for 64-bit registers. The 32-bit
+register variants will therefore run faster on a 32-bit CPU and the 64-bit variants will perform better on a 64-bit CPU. 
+SHA-512/224 and SHA-512/256 are truncated versions of SHA-512 allowing use of 64-bit words with an output size equivalent to 
+the 32-bit register variants (i.e., 224 and 256 digest sizes and better performance on a 64-bit CPU).
