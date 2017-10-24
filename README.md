@@ -72,3 +72,19 @@ c1 ⊕ c2 = (p1 ⊕ k) ⊕ (p2 ⊕ k) (definition)
 ```
 
 At first sight, that may not seem like an issue. To extract either p1 or p2, you’d need to cancel out the XOR operation, which means you need to know the other plaintext. The problem is that even the result of the XOR operation on two plaintexts contains quite a bit information about the plaintexts themselves.
+
+
+---
+
+## Hash Functions : 
+
+A hash function is simply a function that takes in input value, and from that input creates an output value deterministic of
+the input value. For any x input value, you will always receive the same y output value whenever the hash function is run. 
+In this way, every input has a determined output.
+
+#### MD5 : 
+This is the hash function md5, which from any input data creates a 32 character hexadecimal output. Hash functions are 
+generally irreversible (one-way), which means you can’t figure out the input if you only know the output – unless you try 
+every possible input (which is called a brute-force attack). 
+
+
