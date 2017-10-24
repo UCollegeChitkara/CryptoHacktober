@@ -105,3 +105,10 @@ SHA-224 and SHA-256 were designed for 32-bit processor registers, while SHA-384 
 register variants will therefore run faster on a 32-bit CPU and the 64-bit variants will perform better on a 64-bit CPU. 
 SHA-512/224 and SHA-512/256 are truncated versions of SHA-512 allowing use of 64-bit words with an output size equivalent to 
 the 32-bit register variants (i.e., 224 and 256 digest sizes and better performance on a 64-bit CPU).
+
+### SHA-3 :
+Keccak is a family of sponge functions designed by which won NIST’s Secure Hash Algorithm Competition in 2012. Keccak has 
+since been standardized in form of the SHA3-224, SHA3-256, SHA3-384 and SHA3-512 hash functions.
+Although SHA-3 sounds like it might come from the same family as SHA-2, the two are designed very differently. SHA-3 is very 
+efficient in hardware, but is relatively slow in software in comparison to SHA-2. Later in the book, you will find the 
+security aspects of SHA-3, such as preventing length extension attacks.
