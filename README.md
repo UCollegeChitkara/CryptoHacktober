@@ -87,4 +87,13 @@ This is the hash function md5, which from any input data creates a 32 character 
 generally irreversible (one-way), which means you can’t figure out the input if you only know the output – unless you try 
 every possible input (which is called a brute-force attack). 
 
+#### SHA-1 : 
+SHA-1 is another hash function from the MD4 family designed by the NSA, which produces a 160-bit digest. Just like MD5, SHA-1 
+is no longer considered secure for digital signatures. Many software companies and browsers, including Google Chrome, have 
+started to retire support of the signature algorithm of SHA-1. 
+Once again the hashlib Python module can be used to generate a SHA-1 hash:
+```
+import hashlib
+hashlib.sha1(”crypto101”).hexdigest()
+```
 
