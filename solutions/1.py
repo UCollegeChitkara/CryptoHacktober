@@ -15,16 +15,14 @@ CODE = {'A': '.-',     'B': '-...',   'C': '-.-.',
     }
 
 
-def main():
 
-    msg = raw_input('MESSAGE: ')
+msg = raw_input('MESSAGE: ')
 
-    for char in msg:
-        if char == ' ' :
-            print ' '
-        else :
-            print CODE[char.upper()],
-    raw_input("When done, press [ENTER]")
+for char in msg:
+    if char == ' ' :
+        print ' '
+    else :
+        print CODE[char.upper()],
+raw_input("When done, press [ENTER]")
 
-if __name__ == "__main__":
-    main()
+
