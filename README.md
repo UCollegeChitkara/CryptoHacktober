@@ -112,3 +112,24 @@ since been standardized in form of the SHA3-224, SHA3-256, SHA3-384 and SHA3-512
 Although SHA-3 sounds like it might come from the same family as SHA-2, the two are designed very differently. SHA-3 is very 
 efficient in hardware, but is relatively slow in software in comparison to SHA-2. Later in the book, you will find the 
 security aspects of SHA-3, such as preventing length extension attacks.
+
+
+
+----
+
+### Caesar Cipher : 
+The Caesar cipher, also known as a shift cipher, is one of the simplest forms of encryption. It is a substitution cipher where each letter in the original message (called the plaintext) is replaced with a letter corresponding to a certain number of letters up or down in the alphabet. 
+
+In this way, a message that initially was quite readable, ends up in a form that can not be understood at a simple glance. 
+
+For example, here's the Caesar Cipher encryption of a message, using a right shift of 3. 
+
+Plaintext: 
+``` 
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+```
+
+Ciphertext: 
+```
+QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD
+```
