@@ -1,0 +1,6 @@
+import binascii
+a=b"fgfdsfgdf"
+print(binascii.b2a_hex(a))
+import base64
+print(base64.b64encode(a))
+
