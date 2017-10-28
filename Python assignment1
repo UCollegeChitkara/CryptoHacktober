@@ -1,0 +1,6 @@
+import binascii
+x="abcd"
+print (binascii.b2a_hex(x))
+import base64
+x
+print(base64.b64encode(x))
