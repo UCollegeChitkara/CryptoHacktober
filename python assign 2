@@ -1,0 +1,20 @@
+Python 3.6.2 (v3.6.2:5fd33b5, Jul  8 2017, 04:14:34) [MSC v.1900 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> import binascii
+>>> a="duyy8ugut8y29u"
+>>> print(binascii.b2a_hex(a))
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    print(binascii.b2a_hex(a))
+TypeError: a bytes-like object is required, not 'str'
+>>> import base 64
+SyntaxError: invalid syntax
+>>> import base64
+>>> print(base64.b64encode(a))
+Traceback (most recent call last):
+  File "<pyshell#5>", line 1, in <module>
+    print(base64.b64encode(a))
+  File "C:\Users\Charika\AppData\Local\Programs\Python\Python36-32\lib\base64.py", line 58, in b64encode
+    encoded = binascii.b2a_base64(s, newline=False)
+TypeError: a bytes-like object is required, not 'str'
+>>> 
