@@ -4,7 +4,7 @@ A repo with an introduction to cryptography, resources and info.
 ## Introduction to Cryptography :
 Cryptography is a method of storing and transmitting data in a particular form so that only those for whom it is intended can read and process it.      
 
-Cryptography includes techniques such as microdots, merging words with images, and other ways to hide information in storage or transit. Cryptography is most often associated with scrambling plaintext (ordinary text, sometimes referred to as cleartext) into ciphertext (a process called encryption), then back again (known as decryption). 
+Cryptography includes techniques such as microdots, merging words with images, and other ways to hide information in storage or transit. Cryptography is most often associated with scrambling plaintext (ordinary text, sometimes referred to as cleartext) into ciphertext (a process called encryption), then back again (known as decryption).
 
 Modern cryptography concerns itself with the following four objectives:
 
@@ -21,9 +21,9 @@ Modern cryptography concerns itself with the following four objectives:
 
 Output of XOR is 1 when one input or the other (but not both) is 1:
 ```
-0 ⊕ 0 = 0 
+0 ⊕ 0 = 0
 1 ⊕ 0 = 1
-0 ⊕ 1 = 1 
+0 ⊕ 1 = 1
 1 ⊕ 1 = 0
 ```
 There are a few useful arithmetic tricks we can derive from that.
@@ -48,15 +48,15 @@ a ⊕ b ⊕ a = a ⊕ a ⊕ b (second rule)
 There’s an encryption scheme, called a one-time pad, which consists of just that single operator. It’s called a one-time pad because it involves a sequence (the ”pad”) of random bits, and the security of the scheme depends on only using that pad once.
 This scheme is unique not only in its simplicity, but also because it has the strongest possible security guarantee. If the bits are truly random (and therefore unpredictable by an attacker), and the pad is only used once, the attacker learns nothing about the plaintext when they see a ciphertext.
 
-### Attacks on OTP : 
+### Attacks on OTP :
 The one-time pad security guarantee only holds if it is used correctly. First of all, the one-time pad has to consist of truly
-random data. Secondly, the one-time pad can only be used once (hence the name). Unfortunately, most commercial products that 
-claim to be ”one-time pads” are snake oil , and don’t satisfy at least one of those two properties. 
+random data. Secondly, the one-time pad can only be used once (hence the name). Unfortunately, most commercial products that
+claim to be ”one-time pads” are snake oil , and don’t satisfy at least one of those two properties.
 
 #### Not using truly random data :
 
 The first issue is that they use various deterministic constructs to produce the one-time pad, instead of using truly
-random data. That isn’t necessarily insecure: in fact, the most obvious example, a synchronous stream cipher, is something 
+random data. That isn’t necessarily insecure: in fact, the most obvious example, a synchronous stream cipher, is something
 we’ll see later in the book. However, it does invalidate the ”unbreakable” security property of one-time pads. The end user
 would be better served by a more honest cryptosystem, instead of one that lies about its security properties.
 
@@ -76,21 +76,21 @@ At first sight, that may not seem like an issue. To extract either p1 or p2, you
 
 ---
 
-## Hash Functions : 
+## Hash Functions :
 
 A hash function is simply a function that takes in input value, and from that input creates an output value deterministic of
-the input value. For any x input value, you will always receive the same y output value whenever the hash function is run. 
+the input value. For any x input value, you will always receive the same y output value whenever the hash function is run.
 In this way, every input has a determined output.
 
-#### MD5 : 
-This is the hash function md5, which from any input data creates a 32 character hexadecimal output. Hash functions are 
-generally irreversible (one-way), which means you can’t figure out the input if you only know the output – unless you try 
-every possible input (which is called a brute-force attack). 
+#### MD5 :
+This is the hash function md5, which from any input data creates a 32 character hexadecimal output. Hash functions are
+generally irreversible (one-way), which means you can’t figure out the input if you only know the output – unless you try
+every possible input (which is called a brute-force attack).
 
-#### SHA-1 : 
-SHA-1 is another hash function from the MD4 family designed by the NSA, which produces a 160-bit digest. Just like MD5, SHA-1 
-is no longer considered secure for digital signatures. Many software companies and browsers, including Google Chrome, have 
-started to retire support of the signature algorithm of SHA-1. 
+#### SHA-1 :
+SHA-1 is another hash function from the MD4 family designed by the NSA, which produces a 160-bit digest. Just like MD5, SHA-1
+is no longer considered secure for digital signatures. Many software companies and browsers, including Google Chrome, have
+started to retire support of the signature algorithm of SHA-1.
 Once again the hashlib Python module can be used to generate a SHA-1 hash:
 ```
 import hashlib
@@ -98,38 +98,50 @@ hashlib.sha1(”crypto101”).hexdigest()
 ```
 #### SHA-2 :
 SHA-2 is a family of hash functions including SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224 and SHA-512/256 and their
-digest sizes 224, 256, 384, 512, 224 and 256 respectively. These hash can be used for digital signatures, message 
-authentication and random number generators. SHA-2 performs better than SHA-1 and provides better security, 
+digest sizes 224, 256, 384, 512, 224 and 256 respectively. These hash can be used for digital signatures, message
+authentication and random number generators. SHA-2 performs better than SHA-1 and provides better security,
 because of its increase in collision resistance.
 SHA-224 and SHA-256 were designed for 32-bit processor registers, while SHA-384 and SHA-512 for 64-bit registers. The 32-bit
-register variants will therefore run faster on a 32-bit CPU and the 64-bit variants will perform better on a 64-bit CPU. 
-SHA-512/224 and SHA-512/256 are truncated versions of SHA-512 allowing use of 64-bit words with an output size equivalent to 
+register variants will therefore run faster on a 32-bit CPU and the 64-bit variants will perform better on a 64-bit CPU.
+SHA-512/224 and SHA-512/256 are truncated versions of SHA-512 allowing use of 64-bit words with an output size equivalent to
 the 32-bit register variants (i.e., 224 and 256 digest sizes and better performance on a 64-bit CPU).
 
 ### SHA-3 :
-Keccak is a family of sponge functions designed by which won NIST’s Secure Hash Algorithm Competition in 2012. Keccak has 
+Keccak is a family of sponge functions designed by which won NIST’s Secure Hash Algorithm Competition in 2012. Keccak has
 since been standardized in form of the SHA3-224, SHA3-256, SHA3-384 and SHA3-512 hash functions.
-Although SHA-3 sounds like it might come from the same family as SHA-2, the two are designed very differently. SHA-3 is very 
-efficient in hardware, but is relatively slow in software in comparison to SHA-2. Later in the book, you will find the 
+Although SHA-3 sounds like it might come from the same family as SHA-2, the two are designed very differently. SHA-3 is very
+efficient in hardware, but is relatively slow in software in comparison to SHA-2. Later in the book, you will find the
 security aspects of SHA-3, such as preventing length extension attacks.
 
 
 
 ----
 
-### Caesar Cipher : 
-The Caesar cipher, also known as a shift cipher, is one of the simplest forms of encryption. It is a substitution cipher where each letter in the original message (called the plaintext) is replaced with a letter corresponding to a certain number of letters up or down in the alphabet. 
+### Caesar Cipher :
+The Caesar cipher, also known as a shift cipher, is one of the simplest forms of encryption. It is a substitution cipher where each letter in the original message (called the plaintext) is replaced with a letter corresponding to a certain number of letters up or down in the alphabet.
 
-In this way, a message that initially was quite readable, ends up in a form that can not be understood at a simple glance. 
+In this way, a message that initially was quite readable, ends up in a form that can not be understood at a simple glance.
 
-For example, here's the Caesar Cipher encryption of a message, using a right shift of 3. 
+For example, here's the Caesar Cipher encryption of a message, using a right shift of 3.
 
-Plaintext: 
-``` 
+Plaintext:
+```
 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
 ```
 
-Ciphertext: 
+Ciphertext:
 ```
 QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD
 ```
+
+### Ciphers
+Although most people claim they're not familiar with cryptography, they are often familiar with the concept of ciphers, whether or not they are actually conscious of it.
+Ciphers are arguably the corner stone of cryptography. In general, a cipher is simply just a set of steps (an algorithm) for performing both an encryption, and the corresponding decryption.
+
+Despite might what seem to be a relatively simple concept, ciphers play a crucial role in modern technology. Technologies involving communication (including the internet, mobile phones, digital television or even ATMs) rely on ciphers in order to maintain both security and privacy.
+
+Although most people claim they're not familiar with cryptography, they are often familiar with the concept of ciphers, whether or not they are actually conscious of it. Recent films such as The Da Vinci Code and National Treasure: Book of Secrets have plots centred around cryptography and ciphers, bringing these concepts to the general public.
+
+This section (quite appropriately) deals with individual ciphers and algorithms. They have been divided based on their era and category (i.e. when were they used and how do they work). If you're looking for a reference guide, refer to the alphabetical list to the right, otherwise continue reading.
+
+In our effort to provide a practical approach to these, we have developed a javascript implementation for each cipher that allows encryption and decryption of arbitrary text (of your choosing) using the cipher. Some history of each cipher is also included, and tips on cryptanalysis are also provided.
