@@ -145,3 +145,69 @@ Although most people claim they're not familiar with cryptography, they are ofte
 This section (quite appropriately) deals with individual ciphers and algorithms. They have been divided based on their era and category (i.e. when were they used and how do they work). If you're looking for a reference guide, refer to the alphabetical list to the right, otherwise continue reading.
 
 In our effort to provide a practical approach to these, we have developed a javascript implementation for each cipher that allows encryption and decryption of arbitrary text (of your choosing) using the cipher. Some history of each cipher is also included, and tips on cryptanalysis are also provided.
+<hr>  
+
+### Affine Cipher :
+The Affine Cipher is another example of a Monoalphabetic Substituiton cipher.  
+It is slightly different to the other examples encountered before since the encryption process is  
+substantially mathematical.  
+The whole process relies on working modulo m (the length of the alphabet used).  
+By performing a calculation on the plaintext letters, we encipher the plaintext.  
+
+  **Encryption**  
+  The first step in the encryption process is to transform each of the letters in the plaintext  
+  alphabet to the corresponding integer in the range 0 to m-1.  
+  With this done, the encryption process for each letter is given by  
+  ```  
+    E(x) = (ax + b) mod m
+    where a and b are the key for the cipher. 
+  ```  
+  
+  This means that we multiply our integer value for the plaintext letter by a, and then add b to the result.  
+  
+  Finally, we take this modulus m (that is we take the remainder when the solution is divided by m,  
+  or we take away the length of the alphabet until we get a number less than this length).  
+  
+  **Example**  
+  As an example, let us encrypt the plaintext "affine cipher", using the key a = 5, b = 8.  
+  Firstly we must find the integer value of each of the letters in the plaintext alphabet  
+  (the standard alphabet of 26 letters in this case).   
+  The table below gives these values.  
+  
+  ![image](http://crypto.interactive-maths.com/uploads/1/1/3/4/11345755/9236609_orig.jpg)   
+  
+  With the integer values of the plaintext letters found, the next step is to perform the calculations  
+  on those values.  
+  In this instance, the calculation needed is (5x+8).  
+  Finally, we must ensure that all our answers are calculated mod 26 and convert the  
+  integers back to ciphertext lettes.  
+  All this informaion is shown in the table below.  
+  
+  ![image](http://crypto.interactive-maths.com/uploads/1/1/3/4/11345755/9204085.jpg?481)  
+  
+  **Decryption**  
+  In deciphering the ciphertext, we must perform the opposite (or inverse) functions on the  
+  ciphertext to retrieve the plaintext.  
+  Once again, the first step is to convert each of the ciphertext letters into their integer values.  
+  We must now perform the following calculation on each integer
+  ```
+    D(x) = c(x - b) mod m
+    where c is the modular multiplicative inverse of a.
+    
+    That is, ac = 1 mod m 
+  ```  
+  
+  Continuing our example, we shall decrypt the ciphertext "IHHWVC SWFRCP",  
+  using a key of a = 5, b = 8.  
+  The first step here is to find the inverse of a, which in this case is 21  
+  (since 21 x 5 = 105 = 1 mod 26, as 26 x 4 = 104, and 105 - 104 = 1).  
+  
+  We must now perform the inverse calculations on the integer values of the ciphertext.  
+  In this case the calculation in 21(y - 8).  
+  Once again, we must take these answers modulo 26, and finally convert the integers back to plaintext letters.  
+  This is shown in the table below.  
+  
+  ![image](http://crypto.interactive-maths.com/uploads/1/1/3/4/11345755/7900302.jpg?574)  
+  
+  **Important Note** - For decryption *c* must exist => only those values of *a* will work such that gcd(a,m) = 1.  
+  
