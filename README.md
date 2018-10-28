@@ -8,6 +8,10 @@ A repo with an introduction to cryptography, resources and info.
 * https://medium.com/@vixentael/how-to-start-learning-cryptography-49e7d91b54a8
 * https://www.crypto101.io/
 * https://cryptopals.com/ (Code Challenges for Basic Crypto Concepts)
+* https://docs.python-guide.org/scenarios/crypto/
+* https://medium.com/@raul_11817/rsa-with-cryptography-python-library-462b26ce4120
+* https://medium.com/@ismailakkila/black-hat-python-encrypt-and-decrypt-with-rsa-cryptography-bd6df84d65bc
+* https://medium.freecodecamp.org/how-to-create-a-bitcoin-wallet-address-from-a-private-key-eca3ddd9c05f
 
 ## Introduction to Cryptography :
 Cryptography is a method of storing and transmitting data in a particular form so that only those for whom it is intended can read and process it.      
