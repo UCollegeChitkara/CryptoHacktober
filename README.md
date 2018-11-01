@@ -193,7 +193,7 @@ By performing a calculation on the plaintext letters, we encipher the plaintext.
   In this instance, the calculation needed is (5x+8).  
   Finally, we must ensure that all our answers are calculated mod 26 and convert the  
   integers back to ciphertext lettes.  
-  All this informaion is shown in the table below.  
+  All the informaion is shown in the table below.  
   
   ![image](http://crypto.interactive-maths.com/uploads/1/1/3/4/11345755/9204085.jpg?481)  
   
